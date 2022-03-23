@@ -44,8 +44,12 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">Senha</label>
                 <div class="col-md-10">
-                    <input class="form-control" id="senha" type="password" placeholder="Senha (requerido)"
+                    <input class="form-control" id="senha" typ e="password" placeholder="Senha (requerido)"
                         formControlName="senha" />
+                    <span class="text-danger"
+                        *ngIf="cadastroForm.get('senha')?.errors?.['rangeLength'] && (cadastroForm.get('senha')?.dirty || cadastroForm.get('senha')?.touched)">
+                        <p>Tamanho inválido</p>
+                    </span>
                 </div>
             </div>
 

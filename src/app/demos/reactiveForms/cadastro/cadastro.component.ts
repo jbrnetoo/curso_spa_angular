@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CustomValidators } from 'ng2-validation';
 import { Usuario } from './models/usuario';
 
 @Component({
@@ -15,12 +16,15 @@ export class CadastroComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    let senha = new FormControl('', Validators.required, CustomValidators.rangeLength([6, 15]));
+    let senhaConfirmacao = new FormControl('', [Validators.required, CustomValidators.rangeLength([6, 15]), CustomValidators.equalTo(senha)]);
+
     this.cadastroForm = this.fb.group({
       nome: ['', Validators.required],
       cpf: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required],
-      senhaConfirmacao: ['', Validators.required]
+      senha: senha,
+      senhaConfirmacao: senhaConfirmacao
     });
 
   }

@@ -8,6 +8,7 @@ import { registerLocaleData } from '@angular/common';
 import locatePt from '@angular/common/locales/pt';
 registerLocaleData(locatePt);
 import { MenuComponent } from './navegacao/menu/menu.component';
+import { CustomFormsModule } from 'ng2-validation';
 import { HomeComponent } from './navegacao/home/home.component';
 import { FooterComponent } from './navegacao/footer/footer.component';
 import { SobreComponent } from './institucional/sobre/sobre.component';
@@ -35,6 +36,7 @@ import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.compo
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    CustomFormsModule,
     HttpClientModule,
     [RouterModule.forRoot(rootRouterConfig, { useHash: false })]
   ],
