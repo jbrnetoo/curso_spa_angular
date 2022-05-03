@@ -1,11 +1,19 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { ProdutoDashboardComponent } from './produto-dashboard/produto-dashboard.component'
 import { ProdutoRoutingModule } from './produto.route'
+import { ProdutoDashboardComponent } from './produto-dashboard/produto-dashboard.component'
+import { ProdutoDetalheComponent } from './componentes/produto-card-detalhe-component'
+import { ProdutoCountComponent } from './componentes/produto-count-component'
+
+import { registerLocaleData } from '@angular/common'
+import locatePt from '@angular/common/locales/pt';
+registerLocaleData(locatePt);
 
 @NgModule({
     declarations: [
-        ProdutoDashboardComponent
+        ProdutoDashboardComponent,
+        ProdutoDetalheComponent,
+        ProdutoCountComponent
     ],
     imports: [
         CommonModule,
