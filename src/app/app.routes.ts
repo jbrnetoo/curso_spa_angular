@@ -1,4 +1,5 @@
-import { Routes } from "@angular/router";
+import { Routes, RouterModule } from "@angular/router";
+import { NgModule } from "@angular/core";
 import { DataBindingComponent } from "./demos/data-binding/data-binding.component";
 import { CadastroComponent } from "./demos/reactiveForms/cadastro/cadastro.component";
 import { ContatoComponent } from "./institucional/contato/contato.component";
@@ -13,6 +14,19 @@ export const rootRouterConfig: Routes = [
     { path: 'cadastro', component: CadastroComponent },
     { path: 'sobre', component: SobreComponent },
     { path: 'feature-data-binding', component: DataBindingComponent},
-    { path: 'produtos', component: ListaProdutoComponent},
+    { path: 'produtos', 
+        loadChildren: () => import('./demos/arquitetura-componentes/produto.module')
+        .then(m => m.ProdutoModule)
+    },
     { path: 'produto-detalhe/:id', component: ListaProdutoComponent }
 ];
+
+@NgModule({
+    imports: [
+        RouterModule.forRoot(rootRouterConfig)
+    ],
+    exports: [
+        RouterModule
+    ]
+})
+export class AppRoutingModule{}
