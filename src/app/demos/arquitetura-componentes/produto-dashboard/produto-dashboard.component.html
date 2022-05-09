@@ -5,6 +5,10 @@
     <produto-count [produtos]="produtos"></produto-count>
     
     <div class="row text-center">
-        <produto-card-detalhe class="col-md-4" *ngFor="let produto of produtos;" [produto]="produto"></produto-card-detalhe>
+        <produto-card-detalhe class="col-md-4" *ngFor="let produto of produtos;" 
+        [produto]="produto" (status)="mudarStatus($event)">
+            <h6 class="acabou">Ou vá até uma de nossas lojas</h6>
+            <h6 class="corre">Corre que vai acabar</h6>
+        </produto-card-detalhe>
     </div>
 </div>
