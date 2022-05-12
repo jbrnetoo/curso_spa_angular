@@ -6,9 +6,11 @@ import { ContatoComponent } from "./institucional/contato/contato.component";
 import { SobreComponent } from "./institucional/sobre/sobre.component";
 import { HomeComponent } from "./navegacao/home/home.component";
 import { ListaProdutoComponent } from "./produtos/lista-produto/lista-produto.component";
+import { NotFoundComponent } from "./navegacao/not-found/not-found.component";
 
 export const rootRouterConfig: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
+
     { path: 'home', component: HomeComponent },
     { path: 'contato', component: ContatoComponent },
     { path: 'cadastro', component: CadastroComponent },
@@ -18,7 +20,8 @@ export const rootRouterConfig: Routes = [
         loadChildren: () => import('./demos/arquitetura-componentes/produto.module')
         .then(m => m.ProdutoModule)
     },
-    { path: 'produto-detalhe/:id', component: ListaProdutoComponent }
+    { path: 'produto-detalhe/:id', component: ListaProdutoComponent },
+    { path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
