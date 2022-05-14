@@ -38,7 +38,6 @@ import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.compo
   ],
   providers: [
     ProdutoService,
-    {provide: APP_BASE_HREF, useValue: '/'}
   ],
   bootstrap: [AppComponent]
 })
