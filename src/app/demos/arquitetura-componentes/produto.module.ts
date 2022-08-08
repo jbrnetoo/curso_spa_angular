@@ -10,6 +10,7 @@ import locatePt from '@angular/common/locales/pt';
 import { EditarProdutoComponent } from './editar-produto/editar-produto.component';
 import { ProdutoAppComponent } from './produto.app.component'
 import { ProdutoService } from './services/produto.service'
+import { ProdutosResolve } from './services/produto.resolve'
 registerLocaleData(locatePt);
 
 @NgModule({
@@ -25,7 +26,8 @@ registerLocaleData(locatePt);
         ProdutoRoutingModule
     ],
     providers: [
-        ProdutoService
+        ProdutoService,
+        ProdutosResolve
     ],
     exports: []
 })
