@@ -6,14 +6,22 @@ import { ProdutoAppComponent } from "./produto.app.component";
 import { ProdutosResolve } from "./services/produto.resolve";
 
 const produtoRouterConfig: Routes = [
-    {
-        path: '', component: ProdutoAppComponent, 
-        children: [
-            { path: '', redirectTo: 'todos' },
-            { path: ':estado', component: ProdutoDashboardComponent, resolve: { produtos: ProdutosResolve } },
-            { path: 'editar/:id', component: EditarProdutoComponent }
-        ] 
-    }
+  {
+    path: "",
+    component: ProdutoAppComponent,
+    children: [
+      { path: "", redirectTo: "todos" },
+      {
+        path: ":estado",
+        component: ProdutoDashboardComponent,
+        resolve: { produtos: ProdutosResolve },
+        data: {
+          teste: "informação",
+        }
+      },
+      { path: "editar/:id", component: EditarProdutoComponent },
+    ],
+  },
 ];
 
 @NgModule({

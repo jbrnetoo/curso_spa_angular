@@ -17,6 +17,7 @@ import { ContatoComponent } from './institucional/contato/contato.component';
 import { DataBindingComponent } from './demos/data-binding/data-binding.component';
 import { ListaProdutoComponent } from './produtos/lista-produto/lista-produto.component';
 import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.component';
+import { AuthGuard } from './services/app.guard';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.compo
   ],
   providers: [
     ProdutoService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
