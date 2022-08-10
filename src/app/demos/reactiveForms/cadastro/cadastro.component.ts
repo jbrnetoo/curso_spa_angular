@@ -21,6 +21,8 @@ export class CadastroComponent implements OnInit, AfterViewInit {
   genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
 
+  mudancasNaoSalvas: boolean;
+
   constructor(private fb: FormBuilder) {
     this.validationMessages = {
       nome: {
@@ -51,7 +53,7 @@ export class CadastroComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit(): void {
-    let senha = new FormControl('', Validators.required, CustomValidators.rangeLength([6, 15]));
+    let senha = new FormControl('', [Validators.required, CustomValidators.rangeLength([6, 15])]);
     let senhaConfirmacao = new FormControl('', [Validators.required, CustomValidators.rangeLength([6, 15]), CustomValidators.equalTo(senha)]);
 
     this.cadastroForm = this.fb.group({
@@ -70,13 +72,16 @@ export class CadastroComponent implements OnInit, AfterViewInit {
 
     merge(...controlBlurs).subscribe(() => {
       this.displayMessage = this.genericValidator.processarMensagens(this.cadastroForm);
+      this.mudancasNaoSalvas = true;
     });
   }
 
   adicionarUsuario() {
     if(this.cadastroForm.dirty && this.cadastroForm.valid){
       this.usuario = Object.assign({}, this.usuario, this.cadastroForm.value);
-      this.formResult = JSON.stringify(this.cadastroForm.value)
+      this.formResult = JSON.stringify(this.cadastroForm.value);
+
+      this.mudancasNaoSalvas = false;
     }
     else{
       this.formResult = "Não submeteu!"

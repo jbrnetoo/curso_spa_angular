@@ -8,13 +8,14 @@ import { HomeComponent } from "./navegacao/home/home.component";
 import { ListaProdutoComponent } from "./produtos/lista-produto/lista-produto.component";
 import { NotFoundComponent } from "./navegacao/not-found/not-found.component";
 import { AuthGuard } from "./services/app.guard";
+import { CadastroGuard } from "./services/cadastro.guard";
 
 export const rootRouterConfig: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
 
   { path: "home", component: HomeComponent },
   { path: "contato", component: ContatoComponent },
-  { path: "cadastro", component: CadastroComponent },
+  { path: "cadastro", component: CadastroComponent, canDeactivate: [CadastroGuard] },
   { path: "sobre", component: SobreComponent },
   { path: "feature-data-binding", component: DataBindingComponent },
   {
