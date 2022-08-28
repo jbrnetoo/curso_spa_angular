@@ -19,6 +19,8 @@ import { ListaProdutoComponent } from './produtos/lista-produto/lista-produto.co
 import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.component';
 import { AuthGuard } from './services/app.guard';
 import { CadastroGuard } from './services/cadastro.guard';
+import { FileSizePipe } from './demos/pipes/filmes/filesize.pipe';
+import { FilmesComponent } from './demos/pipes/filmes/filmes.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { CadastroGuard } from './services/cadastro.guard';
     DataBindingComponent,
     ListaProdutoComponent,
     CadastroComponent,
+    FilmesComponent,
+    FileSizePipe
   ],
   imports: [
     BrowserModule,
