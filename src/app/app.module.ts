@@ -21,6 +21,9 @@ import { AuthGuard } from './services/app.guard';
 import { CadastroGuard } from './services/cadastro.guard';
 import { FileSizePipe } from './demos/pipes/filmes/filesize.pipe';
 import { FilmesComponent } from './demos/pipes/filmes/filmes.component';
+import { BarComponent } from './demos/bar-di-zones/bar.component';
+import { BarServices } from './demos/bar-di-zones/bar.service';
+import { BarModule } from './demos/bar-di-zones/bar.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { FilmesComponent } from './demos/pipes/filmes/filmes.component';
     ReactiveFormsModule,
     CustomFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BarModule
   ],
   providers: [
     ProdutoService,
