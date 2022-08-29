@@ -1,9 +1,21 @@
-import { Component, OnInit, Inject, Injector, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BarServices, BarServicesMock } from './bar.service';
 
 @Component({
   selector: 'app-bar',
-  templateUrl: './bar.component.html'
+  templateUrl: './bar.component.html',
+  providers: [
+    { provide: BarServices, useClass: BarServices }
+  ]
 })
 export class BarComponent implements OnInit {
-  ngOnInit(): void { }
+
+  barBebida: string;
+
+  constructor(private barServices: BarServices) { }
+  ngOnInit(): void { 
+    this.barBebida = this.barServices.obterBebidas();
+  }
+
+
 }
