@@ -32,6 +32,12 @@ export class MenuComponent {
       admin: false
     },
     {
+      link: '/filmes',
+      name: 'Filmes',
+      exact: false,
+      admin: false
+    },
+    {
       link: '/feature-data-binding',
       name: 'Features',
       exact: false,
