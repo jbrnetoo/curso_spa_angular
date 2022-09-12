@@ -1,8 +1,7 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { ProdutoService } from './produtos/produtos.service';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +18,14 @@ import { ListaProdutoComponent } from './produtos/lista-produto/lista-produto.co
 import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.component';
 import { AuthGuard } from './services/app.guard';
 import { CadastroGuard } from './services/cadastro.guard';
+import { FileSizePipe } from './demos/pipes/filmes/filesize.pipe';
 import { FilmesComponent } from './demos/pipes/filmes/filmes.component';
+import { BarServices } from './demos/bar-di-zones/bar.service';
+import { BarModule } from './demos/bar-di-zones/bar.module';
+
+export const BAR_PROVIDERS: Provider[] = [
+  BarServices
+];
 
 @NgModule({
   declarations: [
@@ -29,7 +35,8 @@ import { FilmesComponent } from './demos/pipes/filmes/filmes.component';
     DataBindingComponent,
     ListaProdutoComponent,
     CadastroComponent,
-    FilmesComponent
+    FilmesComponent,
+    FileSizePipe
   ],
   imports: [
     BrowserModule,
@@ -38,12 +45,14 @@ import { FilmesComponent } from './demos/pipes/filmes/filmes.component';
     ReactiveFormsModule,
     CustomFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BarModule
   ],
   providers: [
     ProdutoService,
     AuthGuard,
-    CadastroGuard
+    CadastroGuard,
+    // BAR_PROVIDERS
   ],
   bootstrap: [AppComponent]
 })

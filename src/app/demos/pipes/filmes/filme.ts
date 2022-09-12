@@ -4,4 +4,4 @@ export interface Filme {
     valor: number,
     imagem: string,
     tamanho: string
-}
+  }
