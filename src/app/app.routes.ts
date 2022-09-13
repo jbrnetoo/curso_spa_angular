@@ -24,18 +24,17 @@ export const rootRouterConfig: Routes = [
   { path: "feature-data-binding", component: DataBindingComponent },
   {
     path: "produtos",
-    loadChildren: () =>
-      import("./demos/arquitetura-componentes/produto.module").then(
-        (m) => m.ProdutoModule
+      loadChildren: () => import("./demos/arquitetura-componentes/produto.module").then(
+          (m) => m.ProdutoModule
       ),
   },
   {
     path: "admin",
-    loadChildren: () =>
-        import("./admin/admin.module")
+      loadChildren: () => import("./admin/admin.module")
         .then((m) => m.AdminModule),
         canLoad: [AuthGuard],
-        canActivate: [AuthGuard]},
+        canActivate: [AuthGuard]
+  },
   { path: "produto-detalhe/:id", component: ListaProdutoComponent },
   { path: "**", component: NotFoundComponent },
 ];
