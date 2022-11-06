@@ -2,7 +2,7 @@ import { Component, Input } from "@angular/core";
 
 @Component({
     selector: 'todo-list',
-    template: './todo-list.component.html',
+    templateUrl: './todo-list.component.html',
     styleUrls: ['todo-list.component.css']
 })
 export class ToDoListComponent {
