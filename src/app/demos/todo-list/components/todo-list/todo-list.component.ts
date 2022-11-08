@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Task } from "../../task";
 
 @Component({
@@ -8,6 +8,36 @@ import { Task } from "../../task";
 })
 export class ToDoListComponent {
 
-    @Input()
+    @Input()  // Entrada de dados
     list: Task[];
+
+    @Output() // Saida de eventos
+    toggle = new EventEmitter<any>();
+
+    toggleItem(index: number, acao: string){
+        const task = this.list[index];
+
+        switch (acao) {
+            case 'iniciar':
+              task.finalizado = false;
+              task.iniciado = true;
+              break; 
+            case 'finalizar':
+              task.finalizado = true;
+              task.iniciado = false;
+              break; 
+            case 'retomar':
+              task.finalizado = false;
+              task.iniciado = true;
+              break; 
+            case 'cancelar':
+              task.finalizado = false;
+              task.iniciado = false;
+              break;      
+        }
+
+        this.toggle.emit({
+            task: { ...task }
+        });
+    }
 }
